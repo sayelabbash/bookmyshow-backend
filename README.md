@@ -17,7 +17,7 @@ This project simulates a real-world ticket booking system including seat locking
 
 ---
 
-## 📂 Project Architecture
+## 🏗️ Architecture
 
 Layered Architecture:
 
@@ -30,28 +30,42 @@ Entities:
 - Seat
 - Booking
 - Payment
+- User
+
+---
+
+## 🔐 Authentication (Basic Implementation)
+
+- User Registration API
+- Manual Login Validation (Email & Password Check)
+- Booking allowed only for existing users
+- Can be extended with Spring Security for production-level security
 
 ---
 
 ## 🔥 Features
 
 - Create Movies, Theatres, Shows
-- Seat generation per show
-- Seat locking mechanism
+- Generate seats per show
+- Seat locking mechanism (AVAILABLE → LOCKED → BOOKED)
 - Booking creation (PENDING state)
 - Payment simulation (SUCCESS / FAILED)
 - Booking confirmation & cancellation
 - Transaction management using `@Transactional`
+- Get booking details by ID
+- Get movie details by ID
 
 ---
 
 ## 🎯 Booking Flow
 
-1. User selects seats
-2. Seats become **LOCKED**
-3. Booking created with **PENDING** status
-4. On payment success → Booking CONFIRMED & Seats BOOKED
-5. On payment failure → Booking CANCELLED & Seats AVAILABLE
+1. User registers
+2. User logs in
+3. User selects seats
+4. Seats become **LOCKED**
+5. Booking created with **PENDING** status
+6. On payment success → Booking CONFIRMED & Seats BOOKED
+7. On payment failure → Booking CANCELLED & Seats AVAILABLE
 
 ---
 
@@ -63,7 +77,7 @@ Entities:
 2. Configure MySQL in `application.properties`
 
 3. Run the application:
-
+4.
 4. Test APIs using Postman.
 
 ---
@@ -71,5 +85,8 @@ Entities:
 ## 👨‍💻 Author
 
 **Sk Sayel Abbash**  
-B.Tech CSE | Spring Boot Enthusiast
+B.Tech CSE (3rd Year)  
+Spring Boot Backend Enthusiast
+
+
 
