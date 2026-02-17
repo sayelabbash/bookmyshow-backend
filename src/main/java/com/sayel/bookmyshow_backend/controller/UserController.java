@@ -2,21 +2,27 @@ package com.sayel.bookmyshow_backend.controller;
 
 import com.sayel.bookmyshow_backend.entity.User;
 import com.sayel.bookmyshow_backend.repository.UserRepository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.sayel.bookmyshow_backend.service.UserService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
+
+
     @PostMapping
     public User createUser(@RequestBody User user){
-        return  userRepository.save(user);
+        return  userService.saveUser(user);
     }
+    @PostMapping("/login")
+    public User login(@RequestParam String email,
+                      @RequestParam String password) {
+        return userService.login(email, password);
+    }
+
 }
